@@ -48,11 +48,26 @@ int main() {
                 // Es una flecha
                 string direction;
                 double time;
-                cout << "Inserta tu direccion deseada (up, down, left, right): ";
-                cin >> direction;
+                while (true) {
+                    // Solo adelante y atras, para girar se utiliza tab
+                    cout << "Inserta tu direccion deseada (up, down): ";
+                    cin >> direction;
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+
+                    // Transformar a minusculas
+                    transform(direction.begin(), direction.end(), direction.begin(), ::tolower);
+
+                    // Chechar si tenemos una respuesta que si existe
+                    if (direction == "up" || direction  == "down") {
+                        break;
+                    } else {
+                        cout << "\nSelecciona una direccion disponible!";
+                    }
+                }
                 cout << "Tiempo deseado (segundos): ";
                 cin >> time;
-                cout << "Activando motor x, avanzando...";
+                cout << "Activando motor x, avanzando a la direccion: \"" << direction << "\"...";
             } else if (input == buttons[0] || input == buttons[1]) {
                 // Es un gatillo
             } else if (input == buttons[3] || input == buttons[4] || input == buttons[5] || input == buttons[6]) {
