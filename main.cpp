@@ -3,11 +3,13 @@
 //
 
 #include <iostream>
+#include <unistd.h>
+
 using namespace std;
 
 void printButtons() {
     // Imprimir lista de botones
-    string buttons[12] = {"triggerl", "triggerr", "arrows", "a", "b", "x", "y", "tabL", "tabR"};
+    string buttons[5] = {"triggerl", "triggerr", "arrows", "tabl", "tabr"};
     cout << "\nLos botones disponibles son:\n";
     cout << "\n--------------------------------------";
     for (string b :  buttons) {
@@ -18,7 +20,7 @@ void printButtons() {
 
 int main() {
     // Lista de botones
-    string buttons[12] = {"triggerl", "triggerr", "arrows", "a", "b", "x", "y", "tabL", "tabR"};
+    string buttons[5] = {"triggerl", "triggerr", "arrows", "tabl", "tabr"};
     cout << "Modo manual!";
 
     // Imprimir botones
@@ -44,13 +46,15 @@ int main() {
         // Verificar si el boton existe
         if (std::find(std::begin(buttons), std::end(buttons), input) != end(buttons)) {
             // El boton si existe
+
+            // Detectar que boton fue
             if (input == buttons[2]) {
                 // Es una flecha
                 string direction;
-                double time;
+                double secs;
                 while (true) {
                     // Solo adelante y atras, para girar se utiliza tab
-                    cout << "Inserta tu direccion deseada (up, down): ";
+                    cout << "Inserta tu direccion deseada (forward, backward): ";
                     cin >> direction;
                     cin.clear();
                     cin.ignore(1000, '\n');
@@ -59,21 +63,49 @@ int main() {
                     transform(direction.begin(), direction.end(), direction.begin(), ::tolower);
 
                     // Chechar si tenemos una respuesta que si existe
-                    if (direction == "up" || direction  == "down") {
+                    if (direction == "forward" || direction  == "backward") {
                         break;
                     } else {
                         cout << "\nSelecciona una direccion disponible!";
                     }
                 }
+                // Pidiendo tiempo
                 cout << "Tiempo deseado (segundos): ";
-                cin >> time;
+                cin >> secs;
                 cout << "Activando motor x, avanzando a la direccion: \"" << direction << "\"...";
+
+                // Nota: Flush es para que se vea el texto antes de esperar. Si se quita, se salta el cout.
+                std::cout << " " << std::flush;
+
+                // Espereando el tiempo
+                usleep(secs * 1000000);
+                cout << "Listo!";
+                std::cout << " " << std::flush;
+                usleep(1000000 / 3);
+
             } else if (input == buttons[0] || input == buttons[1]) {
                 // Es un gatillo
-            } else if (input == buttons[3] || input == buttons[4] || input == buttons[5] || input == buttons[6]) {
-                // Es un boton a b x y
-            } else if (input == buttons[7] || input == buttons[8]) {
+                // Va a servir para activar el mecanismo que va a sacar la llanta
+                if (input == buttons[0]) {
+                    cout << "Cerrar mecanismo!";
+                } else {
+                    cout << "Abrir mecanismo!";
+                }
+            } else if (input == buttons[3] || input == buttons[4]) {
                 // Es un tab
+                if (input == buttons[3]) {
+                    // Izquierda
+                    cout << "Activando ruedas de chasis derecho.";
+                    cout << "Girando 90 grados a la izquierda...";
+                    std::cout << " " << std::flush;
+                    usleep(1000000);
+                } else {
+                    // Derecha
+                    cout << "Activando ruedas de chasis izquierdo.";
+                    cout << "Girando 90 grados a la derecha...";
+                    std::cout << " " << std::flush;
+                    usleep(1000000);
+                }
             }
         } else {
             // El boton no existe
