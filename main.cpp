@@ -9,7 +9,7 @@ using namespace std;
 
 void printButtons() {
     // Imprimir lista de botones
-    string buttons[5] = {"triggerl", "triggerr", "arrows", "tabl", "tabr"};
+    string buttons[5] = {"triggerL", "triggerR", "arrows", "tabL", "tabR"};
     cout << "\nLos botones disponibles son:\n";
     cout << "\n--------------------------------------";
     for (string b :  buttons) {
@@ -81,7 +81,7 @@ int main() {
                 usleep(secs * 1000000);
                 cout << "Listo!";
                 std::cout << " " << std::flush;
-                usleep(1000000 / 3);
+                usleep(1000000 / 2);
 
             } else if (input == buttons[0] || input == buttons[1]) {
                 // Es un gatillo
@@ -96,13 +96,13 @@ int main() {
                 if (input == buttons[3]) {
                     // Izquierda
                     cout << "Activando ruedas de chasis derecho.";
-                    cout << "Girando 90 grados a la izquierda...";
+                    cout << "\nGirando 90 grados a la izquierda...";
                     std::cout << " " << std::flush;
                     usleep(1000000);
                 } else {
                     // Derecha
                     cout << "Activando ruedas de chasis izquierdo.";
-                    cout << "Girando 90 grados a la derecha...";
+                    cout << "\nGirando 90 grados a la derecha...";
                     std::cout << " " << std::flush;
                     usleep(1000000);
                 }
