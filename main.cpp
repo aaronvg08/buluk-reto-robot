@@ -9,7 +9,7 @@ using namespace std;
 
 void printButtons() {
     // Imprimir lista de botones
-    string buttons[5] = {"triggerL", "triggerR", "arrows", "tabL", "tabR"};
+    string buttons[5] = {"triggerL (1)", "triggerR (2)", "arrows (3)", "tabL (4)", "tabR (5)"};
     cout << "\nLos botones disponibles son:\n";
     cout << "\n--------------------------------------";
     for (string b :  buttons) {
@@ -32,12 +32,16 @@ int main() {
     cout << "\nModo autonomo! Tiempo: " << aut_time << " segundos.";
     int aut_input;
 
+    // Variable de puntos
+    int points = 0;
+
     // Imprimir opciones autonomo
     cout << "\n\nSelecciona una de las siguientes opciones:";
     cout << "\n--------------------------------------";
-    cout << "\n- Quitar herramientas, x segundos (1)";
-    cout << "\n- Quitar llantas, x segundos (2)";
-    cout << "\n- Poner llantas, x segundos (3)";
+    cout << "\n- Quitar llanta 1, x segundos (1)";
+    cout << "\n- Quitar llanta 2, x segundos (2)";
+    cout << "\n- Quitar llanta 3, x segundos (3)";
+    cout << "\n- Quitar llanta 4, x segundos (4)";
     cout << "\n--------------------------------------";
 
     while (true) {
@@ -49,29 +53,314 @@ int main() {
         // Variable para ver si el proceso fue exitoso
         bool success = true;
 
-        if (aut_input >= 1 && aut_input < 4) {
+        if (aut_input >= 1 && aut_input < 5) {
             // La opcion si existe
             if (aut_input == 1) {
-                cout << "Quitando herramientas...";
+                cout << "\nAvanzando 6.5 metros adelante...";
                 std::cout << " " << std::flush;
                 
                 // Esperando el tiempo que tarda
-                usleep(5 * microsecond);
-                aut_time = aut_time - 5;
+                // NOTA: Los metros al que esta el carro fue dividido por los metros por segundo del robot
+                usleep(3.71408398393 * microsecond);
+                aut_time = aut_time - 3;
+
+                cout << "\nGirando 90 grados a la izquierda...";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+
+                cout << "\nAvancando 1.2 metros...";
+                std::cout << " " << std::flush;
+                usleep(0.76056327316 * microsecond);
+
+                cout << "\nGirando 90 grados a la derecha....";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+
+                cout << "\nAvanzando 0.6 metros adelante...";
+                std::cout << " " << std::flush;
+                usleep(0.57042245487 * microsecond);
+
+                cout << "\nGirando 90 grados a la derecha....";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+                aut_time = aut_time - 3;
+
+                cout << "\nAvanzando 0.1 metros adelante...";
+                std::cout << " " << std::flush;
+                usleep(0.06338027276 * microsecond);
+
+                // NOTA: El mecanismo es para quitar la llanta. Mas info en mecanica
+                cout << "\nAbriendo mecanismo...";
+                std::cout << " " << std::flush;
+                usleep(1 * microsecond);
+
+                cout << "\nAvanzando 0.1 metros atras...";
+                std::cout << " " << std::flush;
+                usleep(0.06338027276 * microsecond);
+
+                cout << "\nGirando 90 grados a la derecha....";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+
+                cout << "\nAvanzando 6.6 metros adelante...";
+                std::cout << " " << std::flush;
+                usleep(4.18309800238 * microsecond);
+
+                cout << "\nGirando 90 grados a la derecha....";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+
+                cout << "\nAvanzando 1.85 metros adelante...";
+                std::cout << " " << std::flush;
+                usleep(1.17253504612 * microsecond);
+
+                cout << "\nGirando 90 grados a la izquierda...";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+
+                cout << "\nAvanzando 1 metro adelante...";
+                std::cout << " " << std::flush;
+                usleep(0.63380272763 * microsecond);
+
+                cout << "\nCerrando mecanismo...";
+                std::cout << " " << std::flush;
+                usleep(1 * microsecond);
+
+                // Rutina completada!
+                cout << "\nListo! Rueda 1 fuera. +5 puntos.";
+                points = points + 5;
+                aut_time = aut_time - 15.56;
+
             } else if (aut_input == 2) {
-                cout << "Quitando llantas...";
+
+                cout << "\nAvanzando 6.5 metros adelante...";
                 std::cout << " " << std::flush;
 
                 // Esperando el tiempo que tarda
-                usleep(5 * microsecond);
-                aut_time = aut_time - 5;
-            } else {
-                cout << "Colocando llantas...";
+                // NOTA: Los metros al que esta el carro fue dividido por los metros por segundo del robot
+                usleep(3.71408398393 * microsecond);
+                aut_time = aut_time - 3;
+
+                cout << "\nGirando 90 grados a la derecha...";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+
+                cout << "\nAvancando 1.2 metros...";
+                std::cout << " " << std::flush;
+                usleep(0.76056327316 * microsecond);
+
+                cout << "\nGirando 90 grados a la izquierda....";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+
+                cout << "\nAvanzando 0.6 metros adelante...";
+                std::cout << " " << std::flush;
+                usleep(0.57042245487 * microsecond);
+
+                cout << "\nGirando 90 grados a la izquierda....";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+                aut_time = aut_time - 3;
+
+                cout << "\nAvanzando 0.1 metros adelante...";
+                std::cout << " " << std::flush;
+                usleep(0.06338027276 * microsecond);
+
+                // NOTA: El mecanismo es para quitar la llanta. Mas info en mecanica
+                cout << "\nAbriendo mecanismo...";
+                std::cout << " " << std::flush;
+                usleep(1 * microsecond);
+
+                cout << "\nAvanzando 0.1 metros atras...";
+                std::cout << " " << std::flush;
+                usleep(0.06338027276 * microsecond);
+
+                cout << "\nGirando 90 grados a la izquierda....";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+
+                cout << "\nAvanzando 6.6 metros adelante...";
+                std::cout << " " << std::flush;
+                usleep(4.18309800238 * microsecond);
+
+                cout << "\nGirando 90 grados a la derecha....";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+
+                cout << "\nAvanzando 5 metros adelante...";
+                std::cout << " " << std::flush;
+                usleep(3.16901363817 * microsecond);
+
+                cout << "\nGirando 90 grados a la izquierda...";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+
+                cout << "\nAvanzando 1 metro adelante...";
+                std::cout << " " << std::flush;
+                usleep(0.63380272763 * microsecond);
+
+                cout << "\nCerrando mecanismo...";
+                std::cout << " " << std::flush;
+                usleep(1 * microsecond);
+
+                // Rutina completada!
+                cout << "\nListo! Rueda 2 fuera. +5 puntos.";
+                points = points + 5;
+
+                aut_time = aut_time - 15.56;
+
+            } else if (aut_input == 3) {
+                cout << "\nAvanzando 6.5 metros adelante...";
                 std::cout << " " << std::flush;
 
                 // Esperando el tiempo que tarda
-                usleep(5 * microsecond);
-                aut_time = aut_time - 5;
+                // NOTA: Los metros al que esta el carro fue dividido por los metros por segundo del robot
+                usleep(3.71408398393 * microsecond);
+                aut_time = aut_time - 3;
+
+                cout << "\nGirando 90 grados a la izquierda...";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+
+                cout << "\nAvancando 1.2 metros...";
+                std::cout << " " << std::flush;
+                usleep(0.76056327316 * microsecond);
+
+                cout << "\nGirando 90 grados a la derecha....";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+
+                cout << "\nAvanzando 6.11 metros adelante...";
+                std::cout << " " << std::flush;
+                usleep(0.57042245487 * microsecond);
+
+                cout << "\nGirando 90 grados a la derecha....";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+                aut_time = aut_time - 3;
+
+                cout << "\nAvanzando 0.1 metros adelante...";
+                std::cout << " " << std::flush;
+                usleep(0.06338027276 * microsecond);
+
+                // NOTA: El mecanismo es para quitar la llanta. Más info en mecanica
+                cout << "\nAbriendo mecanismo...";
+                std::cout << " " << std::flush;
+                usleep(1 * microsecond);
+
+                cout << "\nAvanzando 0.1 metros atras...";
+                std::cout << " " << std::flush;
+                usleep(0.06338027276 * microsecond);
+
+                cout << "\nGirando 90 grados a la derecha....";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+
+                cout << "\nAvanzando 8.3 metros adelante...";
+                std::cout << " " << std::flush;
+                usleep(4.18309800238 * microsecond);
+
+                cout << "\nGirando 90 grados a la derecha....";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+
+                cout << "\nAvanzando 1.85 metros adelante...";
+                std::cout << " " << std::flush;
+                usleep(1.17253504612 * microsecond);
+
+                cout << "\nGirando 90 grados a la izquierda...";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+
+                cout << "\nAvanzando 1 metro adelante...";
+                std::cout << " " << std::flush;
+                usleep(0.63380272763 * microsecond);
+
+                cout << "\nCerrando mecanismo...";
+                std::cout << " " << std::flush;
+                usleep(1 * microsecond);
+
+                // Rutina completada!
+                cout << "\nListo! Rueda 3 fuera. +5 puntos.";
+                points = points + 5;
+                aut_time = aut_time - 15.56;
+
+            } else if (aut_input == 4) {
+                cout << "\nAvanzando 6.5 metros adelante...";
+                std::cout << " " << std::flush;
+
+                // Esperando el tiempo que tarda
+                // NOTA: Los metros al que esta el carro fue dividido por los metros por segundo del robot
+                usleep(3.71408398393 * microsecond);
+                aut_time = aut_time - 3;
+
+                cout << "\nGirando 90 grados a la derecha...";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+
+                cout << "\nAvancando 1.2 metros...";
+                std::cout << " " << std::flush;
+                usleep(0.76056327316 * microsecond);
+
+                cout << "\nGirando 90 grados a la izquierda....";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+
+                cout << "\nAvanzando 7.84 metros adelante...";
+                std::cout << " " << std::flush;
+                usleep(4.96901338465 * microsecond);
+
+                cout << "\nGirando 90 grados a la izquierda....";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+                aut_time = aut_time - 3;
+
+                cout << "\nAvanzando 0.1 metros adelante...";
+                std::cout << " " << std::flush;
+                usleep(0.06338027276 * microsecond);
+
+                // NOTA: El mecanismo es para quitar la llanta. Mas info en mecanica
+                cout << "\nAbriendo mecanismo...";
+                std::cout << " " << std::flush;
+                usleep(1 * microsecond);
+
+                cout << "\nAvanzando 0.1 metros atras...";
+                std::cout << " " << std::flush;
+                usleep(0.06338027276 * microsecond);
+
+                cout << "\nGirando 90 grados a la izquierda....";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+
+                cout << "\nAvanzando 8.3 metros adelante...";
+                std::cout << " " << std::flush;
+                usleep(4.18309800238 * microsecond);
+
+                cout << "\nGirando 90 grados a la derecha....";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+
+                cout << "\nAvanzando 5 metros adelante...";
+                std::cout << " " << std::flush;
+                usleep(3.16901363817 * microsecond);
+
+                cout << "\nGirando 90 grados a la izquierda...";
+                std::cout << " " << std::flush;
+                usleep(0.5 * microsecond);
+
+                cout << "\nAvanzando 1 metro adelante...";
+                std::cout << " " << std::flush;
+                usleep(0.63380272763 * microsecond);
+
+                cout << "\nCerrando mecanismo...";
+                std::cout << " " << std::flush;
+                usleep(1 * microsecond);
+
+                // Rutina completada!
+                cout << "\nListo! Rueda 4 fuera. +5 puntos.";
+                points = points + 5;
+
+                aut_time = aut_time - 15.56;
             }
             cout << "Listo!";
             std::cout << " " << std::flush;
@@ -114,43 +403,37 @@ int main() {
     printButtons();
 
     // Pedir boton
-    string input;
+    int input;
     while (true) {
-        cout << "\nInserta tu boton (o \"help\" para imprimir los botones): ";
+        cout << "\nInserta tu boton (o \"100\" para imprimir los botones): ";
         cin >> input;
         cin.clear();
         cin.ignore(1000, '\n');
 
-        // Transformar a minusculas
-        transform(input.begin(), input.end(), input.begin(), ::tolower);
-
         // Ver si es "help"
-        if (input == "help") {
+        if (input == 100) {
             printButtons();
             continue;
         }
 
         // Verificar si el boton existe
-        if (std::find(std::begin(buttons), std::end(buttons), input) != end(buttons)) {
+        if (input >= 1 && input < 6) {
             // El boton si existe
 
             // Detectar que boton fue
-            if (input == buttons[2]) {
+            if (input == 3) {
                 // Es una flecha
-                string direction;
+                int direction;
                 double secs;
                 while (true) {
                     // Solo adelante y atras, para girar se utiliza tab
-                    cout << "Inserta tu direccion deseada (forward, backward): ";
+                    cout << "Inserta tu direccion deseada (forward (1), backward (2)): ";
                     cin >> direction;
                     cin.clear();
                     cin.ignore(1000, '\n');
 
-                    // Transformar a minusculas
-                    transform(direction.begin(), direction.end(), direction.begin(), ::tolower);
-
-                    // Chechar si tenemos una respuesta que si existe
-                    if (direction == "forward" || direction  == "backward") {
+                    // Checar si tenemos una respuesta que si existe
+                    if (direction == 1 || direction  == 2) {
                         break;
                     } else {
                         cout << "\nSelecciona una direccion disponible!";
@@ -161,7 +444,7 @@ int main() {
                 cin >> secs;
                 cout << "Activando motor x, avanzando a la direccion: \"" << direction << "\"...";
 
-                // Nota: Activa puertos 1, 9, 10, 13, 15, 17 y 19.
+                // Nota: Motores conectados a los spark max
 
                 // Nota: Flush es para que se vea el texto antes de esperar. Si se quita, se salta el cout.
                 std::cout << " " << std::flush;
@@ -171,7 +454,7 @@ int main() {
 
                 // Distancia
                 // NOTA: LA DISTANCIA ES UNA APROXIMACION!! NO ES EXACTO!!
-                double robot_distance = 0.277778 * secs;
+                double robot_distance = 1.577778 * secs;
 
                 // Espereando el tiempo
                 usleep(secs * microsecond);
@@ -179,19 +462,32 @@ int main() {
                 std::cout << " " << std::flush;
                 usleep(microsecond / 2);
 
-            } else if (input == buttons[0] || input == buttons[1]) {
+            } else if (input == 1 || input == 2) {
                 // Es un gatillo
                 // Va a servir para activar el mecanismo que va a sacar la llanta
-                if (input == buttons[0]) {
+                if (input == 1) {
+                    string yesno;
                     cout << "Cerrar mecanismo!";
                     tele_time_secs = tele_time_secs - 1;
+
+                    cout << "\nLograste quitar o poner una llanta? (Y/N): ";
+                    cin >> yesno;
+
+                    if (yesno == "y" ) {
+                        cout << "\nFelicidades!! :)";
+                        points = points + 5;
+                    } else if (yesno == "n") {
+                        cout << "\nBueno ni modo :(";
+                    } else {
+                        cout << "\nInput invalido!";
+                    }
                 } else {
                     cout << "Abrir mecanismo!";
                     tele_time_secs = tele_time_secs - 1;
                 }
-            } else if (input == buttons[3] || input == buttons[4]) {
+            } else if (input == 4 || input == 5) {
                 // Es un tab
-                if (input == buttons[3]) {
+                if (input == 4) {
                     // Izquierda
                     cout << "Activando ruedas de chasis derecho.";
                     cout << "\nGirando 90 grados a la izquierda...";
@@ -219,7 +515,7 @@ int main() {
             }
         } else {
             // Debug
-            if (input == "debugskip") {
+            if (input == 888) {
                 cout << "\nDEBUG SKIP ACTIVADO! Saltando tiempo...";
                 std::cout << " " << std::flush;
                 usleep(microsecond);
@@ -229,7 +525,7 @@ int main() {
             cout << "Tu boton no existe!!";
         }
     }
-    cout << "\nPuntaje final: ";
+    cout << "\nPuntaje final: " << points;
     cout << "\nOjala ganamos :)";
     return 0;
 }
