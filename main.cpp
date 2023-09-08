@@ -29,7 +29,7 @@ int main() {
     int aut_time = 15;
 
     // Modo autonomo
-    cout << "Modo autonomo!";
+    cout << "\nModo autonomo! Tiempo: " << aut_time << " segundos.";
     int aut_input;
 
     // Imprimir opciones autonomo
@@ -45,6 +45,9 @@ int main() {
         cin >> aut_input;
         cin.clear();
         cin.ignore(1000, '\n');
+
+        // Variable para ver si el proceso fue exitoso
+        bool success = true;
 
         if (aut_input >= 1 && aut_input < 4) {
             // La opcion si existe
@@ -84,6 +87,11 @@ int main() {
                 break;
             }
         } else {
+            if (aut_input == 50) {
+                // Esto es para razones de debug
+                cout << "\nDEBUG SKIP ACTIVADO!";
+                break;
+            }
             cout << "Selecciona una opcion disponible!";
         }
     }
@@ -94,6 +102,11 @@ int main() {
 
     // Modo teleoperado
     cout << "\n\nModo teleoperado!";
+
+    // Variable de tiempo
+    double tele_time_secs = 165;
+    cout << "\nTiempo: " << tele_time_secs << " segundos";
+
     std::cout << " " << std::flush;
     usleep(1 * microsecond);
 
@@ -148,12 +161,21 @@ int main() {
                 cin >> secs;
                 cout << "Activando motor x, avanzando a la direccion: \"" << direction << "\"...";
 
+                // Nota: Activa puertos 1, 9, 10, 13, 15, 17 y 19.
+
                 // Nota: Flush es para que se vea el texto antes de esperar. Si se quita, se salta el cout.
                 std::cout << " " << std::flush;
 
+                // Restando el tiempo
+                tele_time_secs = tele_time_secs - secs;
+
+                // Distancia
+                // NOTA: LA DISTANCIA ES UNA APROXIMACION!! NO ES EXACTO!!
+                double robot_distance = 0.277778 * secs;
+
                 // Espereando el tiempo
                 usleep(secs * microsecond);
-                cout << "Listo!";
+                cout << "Listo! " << robot_distance << " metros recorridos!";
                 std::cout << " " << std::flush;
                 usleep(microsecond / 2);
 
@@ -162,8 +184,10 @@ int main() {
                 // Va a servir para activar el mecanismo que va a sacar la llanta
                 if (input == buttons[0]) {
                     cout << "Cerrar mecanismo!";
+                    tele_time_secs = tele_time_secs - 1;
                 } else {
                     cout << "Abrir mecanismo!";
+                    tele_time_secs = tele_time_secs - 1;
                 }
             } else if (input == buttons[3] || input == buttons[4]) {
                 // Es un tab
@@ -180,11 +204,32 @@ int main() {
                     std::cout << " " << std::flush;
                     usleep(microsecond);
                 }
+
+                tele_time_secs = tele_time_secs - 2;
+            }
+
+            // Checar si el tiempo se acabó
+            if (tele_time_secs <= 0) {
+                cout << "\n\nSe acabo el tiempo!! Deteniendo programa...";
+                std::cout << " " << std::flush;
+                usleep(5 * microsecond);
+                break;
+            } else {
+                cout << "\nTiempo restante: " << tele_time_secs << " segundos";
             }
         } else {
+            // Debug
+            if (input == "debugskip") {
+                cout << "\nDEBUG SKIP ACTIVADO! Saltando tiempo...";
+                std::cout << " " << std::flush;
+                usleep(microsecond);
+                break;
+            }
             // El boton no existe
             cout << "Tu boton no existe!!";
         }
     }
+    cout << "\nPuntaje final: ";
+    cout << "\nOjala ganamos :)";
     return 0;
 }
