@@ -9,7 +9,7 @@ using namespace std;
 
 void printButtons() {
     // Imprimir lista de botones
-    string buttons[5] = {"triggerL (1)", "triggerR (2)", "arrows (3)", "tabL (4)", "tabR (5)"};
+    string buttons[5] = {"triggerL (1) (Cerrar Mecanismo)", "triggerR (2) (Abrir Mecanismo)", "arrows (3) (Mover adelante y atrás)", "tabL (4) (Girar 90 grados a la izq)", "tabR (5) (Girar 90 grados a la izq)"};
     cout << "\nLos botones disponibles son:\n";
     cout << "\n--------------------------------------";
     for (string b :  buttons) {
@@ -38,10 +38,10 @@ int main() {
     // Imprimir opciones autonomo
     cout << "\n\nSelecciona una de las siguientes opciones:";
     cout << "\n--------------------------------------";
-    cout << "\n- Quitar llanta 1, x segundos (1)";
-    cout << "\n- Quitar llanta 2, x segundos (2)";
-    cout << "\n- Quitar llanta 3, x segundos (3)";
-    cout << "\n- Quitar llanta 4, x segundos (4)";
+    cout << "\n- Quitar llanta 1, 15 segundos (1)";
+    cout << "\n- Quitar llanta 2, 15 segundos (2)";
+    cout << "\n- Quitar llanta 3, 15 segundos (3)";
+    cout << "\n- Quitar llanta 4, 15 segundos (4)";
     cout << "\n--------------------------------------";
 
     while (true) {
@@ -57,6 +57,7 @@ int main() {
             // La opcion si existe
             if (aut_input == 1) {
                 cout << "\nAvanzando 6.5 metros adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 
                 // Esperando el tiempo que tarda
@@ -77,6 +78,7 @@ int main() {
                 usleep(0.5 * microsecond);
 
                 cout << "\nAvanzando 0.6 metros adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(0.57042245487 * microsecond);
 
@@ -86,6 +88,7 @@ int main() {
                 aut_time = aut_time - 3;
 
                 cout << "\nAvanzando 0.1 metros adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(0.06338027276 * microsecond);
 
@@ -95,6 +98,7 @@ int main() {
                 usleep(1 * microsecond);
 
                 cout << "\nAvanzando 0.1 metros atras...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(0.06338027276 * microsecond);
 
@@ -111,6 +115,7 @@ int main() {
                 usleep(0.5 * microsecond);
 
                 cout << "\nAvanzando 1.85 metros adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(1.17253504612 * microsecond);
 
@@ -119,6 +124,7 @@ int main() {
                 usleep(0.5 * microsecond);
 
                 cout << "\nAvanzando 1 metro adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(0.63380272763 * microsecond);
 
@@ -134,6 +140,7 @@ int main() {
             } else if (aut_input == 2) {
 
                 cout << "\nAvanzando 6.5 metros adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
 
                 // Esperando el tiempo que tarda
@@ -146,6 +153,7 @@ int main() {
                 usleep(0.5 * microsecond);
 
                 cout << "\nAvancando 1.2 metros...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(0.76056327316 * microsecond);
 
@@ -154,6 +162,7 @@ int main() {
                 usleep(0.5 * microsecond);
 
                 cout << "\nAvanzando 0.6 metros adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(0.57042245487 * microsecond);
 
@@ -163,6 +172,7 @@ int main() {
                 aut_time = aut_time - 3;
 
                 cout << "\nAvanzando 0.1 metros adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(0.06338027276 * microsecond);
 
@@ -172,6 +182,7 @@ int main() {
                 usleep(1 * microsecond);
 
                 cout << "\nAvanzando 0.1 metros atras...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(0.06338027276 * microsecond);
 
@@ -180,6 +191,7 @@ int main() {
                 usleep(0.5 * microsecond);
 
                 cout << "\nAvanzando 6.6 metros adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(4.18309800238 * microsecond);
 
@@ -188,6 +200,7 @@ int main() {
                 usleep(0.5 * microsecond);
 
                 cout << "\nAvanzando 5 metros adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(3.16901363817 * microsecond);
 
@@ -196,6 +209,7 @@ int main() {
                 usleep(0.5 * microsecond);
 
                 cout << "\nAvanzando 1 metro adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(0.63380272763 * microsecond);
 
@@ -211,6 +225,7 @@ int main() {
 
             } else if (aut_input == 3) {
                 cout << "\nAvanzando 6.5 metros adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
 
                 // Esperando el tiempo que tarda
@@ -231,6 +246,7 @@ int main() {
                 usleep(0.5 * microsecond);
 
                 cout << "\nAvanzando 6.11 metros adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(0.57042245487 * microsecond);
 
@@ -240,6 +256,7 @@ int main() {
                 aut_time = aut_time - 3;
 
                 cout << "\nAvanzando 0.1 metros adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(0.06338027276 * microsecond);
 
@@ -257,6 +274,7 @@ int main() {
                 usleep(0.5 * microsecond);
 
                 cout << "\nAvanzando 8.3 metros adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(4.18309800238 * microsecond);
 
@@ -265,6 +283,7 @@ int main() {
                 usleep(0.5 * microsecond);
 
                 cout << "\nAvanzando 1.85 metros adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(1.17253504612 * microsecond);
 
@@ -273,6 +292,7 @@ int main() {
                 usleep(0.5 * microsecond);
 
                 cout << "\nAvanzando 1 metro adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(0.63380272763 * microsecond);
 
@@ -287,6 +307,7 @@ int main() {
 
             } else if (aut_input == 4) {
                 cout << "\nAvanzando 6.5 metros adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
 
                 // Esperando el tiempo que tarda
@@ -299,6 +320,7 @@ int main() {
                 usleep(0.5 * microsecond);
 
                 cout << "\nAvancando 1.2 metros...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(0.76056327316 * microsecond);
 
@@ -307,6 +329,7 @@ int main() {
                 usleep(0.5 * microsecond);
 
                 cout << "\nAvanzando 7.84 metros adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(4.96901338465 * microsecond);
 
@@ -316,6 +339,7 @@ int main() {
                 aut_time = aut_time - 3;
 
                 cout << "\nAvanzando 0.1 metros adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(0.06338027276 * microsecond);
 
@@ -325,6 +349,7 @@ int main() {
                 usleep(1 * microsecond);
 
                 cout << "\nAvanzando 0.1 metros atras...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(0.06338027276 * microsecond);
 
@@ -333,6 +358,7 @@ int main() {
                 usleep(0.5 * microsecond);
 
                 cout << "\nAvanzando 8.3 metros adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(4.18309800238 * microsecond);
 
@@ -341,6 +367,7 @@ int main() {
                 usleep(0.5 * microsecond);
 
                 cout << "\nAvanzando 5 metros adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(3.16901363817 * microsecond);
 
@@ -349,6 +376,7 @@ int main() {
                 usleep(0.5 * microsecond);
 
                 cout << "\nAvanzando 1 metro adelante...";
+                cout << "\nVelocidad del motor: 1";
                 std::cout << " " << std::flush;
                 usleep(0.63380272763 * microsecond);
 
@@ -405,7 +433,17 @@ int main() {
     // Pedir boton
     int input;
     while (true) {
-        cout << "\nInserta tu boton (o \"100\" para imprimir los botones): ";
+        if (tele_time_secs <= 165 && tele_time_secs > 100) {
+            cout << "\nRECOMENDACION: Quitar llantas!";
+        } else if (tele_time_secs <= 100) {
+            cout << "\nRECOMENDACION: Colocar llantas!";
+        } else if (tele_time_secs < 30) {
+            cout << "\nRECOMENDACION: Apretar car release!";
+        } else if (tele_time_secs < 20) {
+            cout << "\nRECOMENDACION: Empujar coche a la salida!";
+        }
+
+        cout << "\n\nInserta tu boton (o \"100\" para imprimir los botones): ";
         cin >> input;
         cin.clear();
         cin.ignore(1000, '\n');
@@ -427,7 +465,7 @@ int main() {
                 double secs;
                 while (true) {
                     // Solo adelante y atras, para girar se utiliza tab
-                    cout << "Inserta tu direccion deseada (forward (1), backward (2)): ";
+                    cout << "Inserta tu direccion deseada (adelante (1), atras (2)): ";
                     cin >> direction;
                     cin.clear();
                     cin.ignore(1000, '\n');
@@ -442,7 +480,12 @@ int main() {
                 // Pidiendo tiempo
                 cout << "Tiempo deseado (segundos): ";
                 cin >> secs;
-                cout << "Activando motor x, avanzando a la direccion: \"" << direction << "\"...";
+                if (direction == 1) {
+                    cout << "Activando motor x, avanzando a la direccion: \"adelante\"...";
+                } else {
+                    cout << "Activando motor x, avanzando a la direccion: \"atras\"...";
+                }
+                cout << "\nVelocidad del motor: 1";
 
                 // Nota: Motores conectados a los spark max
 
@@ -474,8 +517,8 @@ int main() {
                     cin >> yesno;
 
                     if (yesno == "y" ) {
-                        cout << "\nFelicidades!! :)";
-                        points = points + 5;
+                        cout << "\nFelicidades!! +3 puntos! :)";
+                        points = points + 3;
                     } else if (yesno == "n") {
                         cout << "\nBueno ni modo :(";
                     } else {
@@ -525,7 +568,7 @@ int main() {
             cout << "Tu boton no existe!!";
         }
     }
-    cout << "\nPuntaje final: " << points;
+    cout << "\nPuntaje final (aproximacion): " << points;
     cout << "\nOjala ganamos :)";
     return 0;
 }
