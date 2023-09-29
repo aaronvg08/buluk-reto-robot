@@ -9,7 +9,7 @@ using namespace std;
 
 void printButtons() {
     // Imprimir lista de botones
-    string buttons[5] = {"triggerL (1) (Cerrar Mecanismo)", "triggerR (2) (Abrir Mecanismo)", "arrows (3) (Mover adelante y atrás)", "tabL (4) (Girar 90 grados a la izq)", "tabR (5) (Girar 90 grados a la izq)"};
+    string buttons[5] = {"button0 (1) (Cerrar Mecanismo)", "button1 (2) (Abrir Mecanismo)", "pov (3) (Mover adelante y atrás)", "button4 (4) (Girar 90 grados a la izq)", "button5 (5) (Girar 90 grados a la izq)"};
     cout << "\nLos botones disponibles son:\n";
     cout << "\n--------------------------------------";
     for (string b :  buttons) {
@@ -20,7 +20,7 @@ void printButtons() {
 
 int main() {
     // Lista de botones
-    string buttons[5] = {"triggerl", "triggerr", "arrows", "tabl", "tabr"};
+    string buttons[5] = {"button0", "button1", "pov", "button4", "button5"};
     
     // Microsegundos
     int microsecond = 1000000;
@@ -36,12 +36,35 @@ int main() {
     int points = 0;
 
     // Imprimir opciones autonomo
+    cout << "\n\nLlantas:\n\n";
+    cout << "        °°#####################°°\n"
+            "    2   °°°####################°°°   1\n"
+            "        °°°####################°°°\n"
+            "        °°#####################°°\n"
+            "        #######################\n"
+            "        #######################\n"
+            "        °°#####################°°\n"
+            "    4   °°°####################°°°    3\n"
+            "        °°°####################°°°\n"
+            "        °°#####################°°";
     cout << "\n\nSelecciona una de las siguientes opciones:";
     cout << "\n--------------------------------------";
     cout << "\n- Quitar llanta 1, 15 segundos (1)";
+    cout << "\n   - Conducir hasta llanta 1 con ruta predeterminada";
+    cout << "\n   - Quitarla con el mecanismo";
+    cout << "\n   - Ponerla en el lugar correspondiente";
     cout << "\n- Quitar llanta 2, 15 segundos (2)";
+    cout << "\n   - Conducir hasta llanta 2 con ruta predeterminada";
+    cout << "\n   - Quitarla con el mecanismo";
+    cout << "\n   - Ponerla en el lugar correspondiente";
     cout << "\n- Quitar llanta 3, 15 segundos (3)";
+    cout << "\n   - Conducir hasta llanta 3 con ruta predeterminada";
+    cout << "\n   - Quitarla con el mecanismo";
+    cout << "\n   - Ponerla en el lugar correspondiente";
     cout << "\n- Quitar llanta 4, 15 segundos (4)";
+    cout << "\n   - Conducir hasta llanta 4 con ruta predeterminada";
+    cout << "\n   - Quitarla con el mecanismo";
+    cout << "\n   - Ponerla en el lugar correspondiente";
     cout << "\n--------------------------------------";
 
     while (true) {
@@ -465,22 +488,26 @@ int main() {
                 double secs;
                 while (true) {
                     // Solo adelante y atras, para girar se utiliza tab
-                    cout << "Inserta tu direccion deseada (adelante (1), atras (2)): ";
+                    cout << "Inserta tu direccion deseada (adelante (0), atras (180)): ";
                     cin >> direction;
                     cin.clear();
                     cin.ignore(1000, '\n');
 
+                    //NOTA: LA DIRECCION ES ACORDE AL CONTROL Y LAS POSICIONES QUE HAY EN "POV"
+
                     // Checar si tenemos una respuesta que si existe
-                    if (direction == 1 || direction  == 2) {
+                    if (direction >= 0 && direction <= 315) {
                         break;
                     } else {
-                        cout << "\nSelecciona una direccion disponible!";
+                        cout << "\nSelecciona una direccion disponible!\n";
                     }
                 }
                 // Pidiendo tiempo
                 cout << "Tiempo deseado (segundos): ";
                 cin >> secs;
-                if (direction == 1) {
+
+                //NOTA: LA DIRECCION ES ACORDE AL CONTROL Y LAS POSICIONES QUE HAY EN "POV"
+                if ((direction >= 0 && direction <= 90) || (direction >= 270 && direction <= 315)) {
                     cout << "Activando motor x, avanzando a la direccion: \"adelante\"...";
                 } else {
                     cout << "Activando motor x, avanzando a la direccion: \"atras\"...";
@@ -516,10 +543,10 @@ int main() {
                     cout << "\nLograste quitar o poner una llanta? (Y/N): ";
                     cin >> yesno;
 
-                    if (yesno == "y" ) {
+                    if (yesno == "y" || yesno == "Y") {
                         cout << "\nFelicidades!! +3 puntos! :)";
                         points = points + 3;
-                    } else if (yesno == "n") {
+                    } else if (yesno == "n" || yesno == "N") {
                         cout << "\nBueno ni modo :(";
                     } else {
                         cout << "\nInput invalido!";
@@ -529,7 +556,7 @@ int main() {
                     tele_time_secs = tele_time_secs - 1;
                 }
             } else if (input == 4 || input == 5) {
-                // Es un tab
+                // Girar 90 grados
                 if (input == 4) {
                     // Izquierda
                     cout << "Activando ruedas de chasis derecho.";
