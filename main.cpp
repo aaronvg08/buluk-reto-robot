@@ -18,6 +18,33 @@ void printButtons() {
     cout << "\n--------------------------------------\n";
 }
 
+void moveRobot(int mode, double quantity, double secs, int orientation = 0, double speed = 1) {
+    int microsecond = 1000000;
+    if (mode == 1) {
+        // Avanzar
+        if (orientation == 0) {
+            cout << "\nAvanzando" << quantity << "metros adelante...";
+        } else {
+            cout << "\nAvanzando" << quantity << "metros atras...";
+        }
+        cout << "\nVelocidad del motor: " << speed;
+        std::cout << " " << std::flush;
+        usleep(secs * microsecond);
+    } else {
+        // Girar
+        if (orientation == 1) {
+            cout << "\nGirando" << quantity << "grados a la izquierda...";
+        } else {
+            cout << "\nGirando" << quantity << "grados a la derecha...";
+        }
+        std::cout << " " << std::flush;
+
+        // Esperando el tiempo que tarda
+        // NOTA: Los metros al que esta el carro fue dividido por los metros por segundo del robo
+        usleep(secs * microsecond);
+    }
+}
+
 int main() {
     // Lista de botones
     string buttons[5] = {"button0", "button1", "pov", "button4", "button5"};
@@ -79,77 +106,52 @@ int main() {
         if (aut_input >= 1 && aut_input < 5) {
             // La opcion si existe
             if (aut_input == 1) {
-                cout << "\nAvanzando 6.5 metros adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                
-                // Esperando el tiempo que tarda
-                // NOTA: Los metros al que esta el carro fue dividido por los metros por segundo del robot
-                usleep(3.71408398393 * microsecond);
-                aut_time = aut_time - 3;
+                // Movimiento
+                moveRobot(1, 6.5, 3.71408398393);
 
-                cout << "\nGirando 90 grados a la izquierda...";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
+                // Girando 90 grados a la izq
+                moveRobot(2, 90, 0.5, 1);
 
-                cout << "\nAvancando 1.2 metros...";
-                std::cout << " " << std::flush;
-                usleep(0.76056327316 * microsecond);
+                // Movimiento
+                moveRobot(1, 1.2, 0.76056327316);
 
-                cout << "\nGirando 90 grados a la derecha....";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
+                // Girando 90 grados a la derecha
+                moveRobot(2, 90, 0.5, 0);
 
-                cout << "\nAvanzando 0.6 metros adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(0.57042245487 * microsecond);
+                // Movimiento
+                moveRobot(1, 0.6, 0.57042245487);
 
-                cout << "\nGirando 90 grados a la derecha....";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
-                aut_time = aut_time - 3;
+                // Girando 90 grados a la derecha
+                moveRobot(2, 90, 0.5, 0);
 
-                cout << "\nAvanzando 0.1 metros adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(0.06338027276 * microsecond);
+                // Movimiento
+                moveRobot(1, 0.1, 0.06338027276);
 
                 // NOTA: El mecanismo es para quitar la llanta. Mas info en mecanica
                 cout << "\nAbriendo mecanismo...";
                 std::cout << " " << std::flush;
                 usleep(1 * microsecond);
 
-                cout << "\nAvanzando 0.1 metros atras...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(0.06338027276 * microsecond);
+                // Movimiento
+                moveRobot(1, 0.1, 0.06338027276, 1);
 
-                cout << "\nGirando 90 grados a la derecha....";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
+                // Girando 90 grados a la derecha
+                moveRobot(2, 90, 0.5, 0);
 
-                cout << "\nAvanzando 6.6 metros adelante...";
-                std::cout << " " << std::flush;
-                usleep(4.18309800238 * microsecond);
+                // Movimiento
+                moveRobot(1, 6.6, 4.18309800238);
 
-                cout << "\nGirando 90 grados a la derecha....";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
+                // Girando 90 grados a la derecha
+                moveRobot(2, 90, 0.5, 0);
 
-                cout << "\nAvanzando 1.85 metros adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(1.17253504612 * microsecond);
+                // Movimiento
+                moveRobot(1, 1.8, 1.17253504612);
 
-                cout << "\nGirando 90 grados a la izquierda...";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
+                // Girando 90 grados a la izq
+                moveRobot(2, 90, 0.5, 1);
 
-                cout << "\nAvanzando 1 metro adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(0.63380272763 * microsecond);
+                // Movimiento
+                moveRobot(1, 1, 0.63380272763);
 
                 cout << "\nCerrando mecanismo...";
                 std::cout << " " << std::flush;
@@ -161,80 +163,53 @@ int main() {
                 aut_time = aut_time - 15.56;
 
             } else if (aut_input == 2) {
+                // Movimiento
+                moveRobot(1, 6.5, 3.71408398393);
 
-                cout << "\nAvanzando 6.5 metros adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
+                // Girando 90 grados a la derecha
+                moveRobot(2, 90, 0.5, 1);
 
-                // Esperando el tiempo que tarda
-                // NOTA: Los metros al que esta el carro fue dividido por los metros por segundo del robot
-                usleep(3.71408398393 * microsecond);
-                aut_time = aut_time - 3;
+                // Movimiento
+                moveRobot(1, 1.2, 0.76056327316);
 
-                cout << "\nGirando 90 grados a la derecha...";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
+                // Girando 90 grados a la izq
+                moveRobot(2, 90, 0.5, 1);
 
-                cout << "\nAvancando 1.2 metros...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(0.76056327316 * microsecond);
+                // Movimiento
+                moveRobot(1, 0.6, 0.57042245487);
 
-                cout << "\nGirando 90 grados a la izquierda....";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
 
-                cout << "\nAvanzando 0.6 metros adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(0.57042245487 * microsecond);
+                // Girando 90 grados a la izq
+                moveRobot(2, 90, 0.5, 1);
 
-                cout << "\nGirando 90 grados a la izquierda....";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
-                aut_time = aut_time - 3;
-
-                cout << "\nAvanzando 0.1 metros adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(0.06338027276 * microsecond);
+                // Movimiento
+                moveRobot(1, 0.1, 0.06338027276);
 
                 // NOTA: El mecanismo es para quitar la llanta. Mas info en mecanica
                 cout << "\nAbriendo mecanismo...";
                 std::cout << " " << std::flush;
                 usleep(1 * microsecond);
 
-                cout << "\nAvanzando 0.1 metros atras...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(0.06338027276 * microsecond);
+                // Movimiento
+                moveRobot(1, 0.1, 0.06338027276, 1);
 
-                cout << "\nGirando 90 grados a la izquierda....";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
+                // Girando 90 grados a la izq
+                moveRobot(2, 90, 0.5, 1);
 
-                cout << "\nAvanzando 6.6 metros adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(4.18309800238 * microsecond);
+                // Movimiento
+                moveRobot(1, 6.6, 4.18309800238);
 
-                cout << "\nGirando 90 grados a la derecha....";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
+                // Girando 90 grados a la izq
+                moveRobot(2, 90, 0.5, 1);
 
-                cout << "\nAvanzando 5 metros adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(3.16901363817 * microsecond);
+                // Movimiento
+                moveRobot(1, 5, 3.16901363817);
 
-                cout << "\nGirando 90 grados a la izquierda...";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
+                // Girando 90 grados a la izq
+                moveRobot(2, 90, 0.5, 1);
 
-                cout << "\nAvanzando 1 metro adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(0.63380272763 * microsecond);
+                // Movimiento
+                moveRobot(1, 1, 0.63380272763);
 
                 cout << "\nCerrando mecanismo...";
                 std::cout << " " << std::flush;
@@ -247,77 +222,52 @@ int main() {
                 aut_time = aut_time - 15.56;
 
             } else if (aut_input == 3) {
-                cout << "\nAvanzando 6.5 metros adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
+                // Movimiento
+                moveRobot(1, 6.5, 3.71408398393);
 
-                // Esperando el tiempo que tarda
-                // NOTA: Los metros al que esta el carro fue dividido por los metros por segundo del robot
-                usleep(3.71408398393 * microsecond);
-                aut_time = aut_time - 3;
+                // Girando 90 grados a la izq
+                moveRobot(2, 90, 0.5, 1);
 
-                cout << "\nGirando 90 grados a la izquierda...";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
+                // Movimiento
+                moveRobot(1, 1.2, 0.76056327316);
 
-                cout << "\nAvancando 1.2 metros...";
-                std::cout << " " << std::flush;
-                usleep(0.76056327316 * microsecond);
+                // Girando 90 grados a la derecha
+                moveRobot(2, 90, 0.5, 1);
 
-                cout << "\nGirando 90 grados a la derecha....";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
+                // Movimiento
+                moveRobot(1, 6.11, 0.57042245487);
 
-                cout << "\nAvanzando 6.11 metros adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(0.57042245487 * microsecond);
+                // Girando 90 grados a la derecha
+                moveRobot(2, 90, 0.5, 1);
 
-                cout << "\nGirando 90 grados a la derecha....";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
-                aut_time = aut_time - 3;
-
-                cout << "\nAvanzando 0.1 metros adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(0.06338027276 * microsecond);
+                // Movimiento
+                moveRobot(1, 0.1, 0.06338027276);
 
                 // NOTA: El mecanismo es para quitar la llanta. Más info en mecanica
                 cout << "\nAbriendo mecanismo...";
                 std::cout << " " << std::flush;
                 usleep(1 * microsecond);
 
-                cout << "\nAvanzando 0.1 metros atras...";
-                std::cout << " " << std::flush;
-                usleep(0.06338027276 * microsecond);
+                // Movimiento
+                moveRobot(1, 0.1, 0.06338027276, 1);
 
-                cout << "\nGirando 90 grados a la derecha....";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
+                // Girando 90 grados a la derecha
+                moveRobot(2, 90, 0.5, 1);
 
-                cout << "\nAvanzando 8.3 metros adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(4.18309800238 * microsecond);
+                // Movimiento
+                moveRobot(1, 8.3, 4.18309800238);
 
-                cout << "\nGirando 90 grados a la derecha....";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
+                // Girando 90 grados a la derecha
+                moveRobot(2, 90, 0.5, 1);
 
-                cout << "\nAvanzando 1.85 metros adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(1.17253504612 * microsecond);
+                // Movimiento
+                moveRobot(1, 1.85, 1.17253504612);
 
-                cout << "\nGirando 90 grados a la izquierda...";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
+                // Girando 90 grados a la izq
+                moveRobot(2, 90, 0.5, 1);
 
-                cout << "\nAvanzando 1 metro adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(0.63380272763 * microsecond);
+                // Movimiento
+                moveRobot(1, 1, 0.63380272763);
 
                 cout << "\nCerrando mecanismo...";
                 std::cout << " " << std::flush;
@@ -329,79 +279,52 @@ int main() {
                 aut_time = aut_time - 15.56;
 
             } else if (aut_input == 4) {
-                cout << "\nAvanzando 6.5 metros adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
+                // Movimiento
+                moveRobot(1, 6.5, 3.71408398393);
 
-                // Esperando el tiempo que tarda
-                // NOTA: Los metros al que esta el carro fue dividido por los metros por segundo del robot
-                usleep(3.71408398393 * microsecond);
-                aut_time = aut_time - 3;
+                // Girando 90 grados a la derecha
+                moveRobot(2, 90, 0.5, 1);
 
-                cout << "\nGirando 90 grados a la derecha...";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
+                // Movimiento
+                moveRobot(1, 1.2, 0.76056327316);
 
-                cout << "\nAvancando 1.2 metros...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(0.76056327316 * microsecond);
+                // Girando 90 grados a la izq
+                moveRobot(2, 90, 0.5, 1);
 
-                cout << "\nGirando 90 grados a la izquierda....";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
+                // Movimiento
+                moveRobot(1, 7.84, 4.96901338465);
 
-                cout << "\nAvanzando 7.84 metros adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(4.96901338465 * microsecond);
+                // Girando 90 grados a la izq
+                moveRobot(2, 90, 0.5, 1);
 
-                cout << "\nGirando 90 grados a la izquierda....";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
-                aut_time = aut_time - 3;
-
-                cout << "\nAvanzando 0.1 metros adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(0.06338027276 * microsecond);
+                // Movimiento
+                moveRobot(1, 0.1, 0.06338027276);
 
                 // NOTA: El mecanismo es para quitar la llanta. Mas info en mecanica
                 cout << "\nAbriendo mecanismo...";
                 std::cout << " " << std::flush;
                 usleep(1 * microsecond);
 
-                cout << "\nAvanzando 0.1 metros atras...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(0.06338027276 * microsecond);
+                // Movimiento
+                moveRobot(1, 0.1, 0.06338027276, 1);
 
-                cout << "\nGirando 90 grados a la izquierda....";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
+                // Girando 90 grados a la izq
+                moveRobot(2, 90, 0.5, 1);
 
-                cout << "\nAvanzando 8.3 metros adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(4.18309800238 * microsecond);
+                // Movimiento
+                moveRobot(1, 8.3, 4.18309800238);
 
-                cout << "\nGirando 90 grados a la derecha....";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
+                // Girando 90 grados a la derecha
+                moveRobot(2, 90, 0.5, 1);
 
-                cout << "\nAvanzando 5 metros adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(3.16901363817 * microsecond);
+                // Movimiento
+                moveRobot(1, 5, 3.16901363817);
 
-                cout << "\nGirando 90 grados a la izquierda...";
-                std::cout << " " << std::flush;
-                usleep(0.5 * microsecond);
+                // Girando 90 grados a la izq
+                moveRobot(2, 90, 0.5, 1);
 
-                cout << "\nAvanzando 1 metro adelante...";
-                cout << "\nVelocidad del motor: 1";
-                std::cout << " " << std::flush;
-                usleep(0.63380272763 * microsecond);
+                // Movimiento
+                moveRobot(1, 1, 0.63380272763);
 
                 cout << "\nCerrando mecanismo...";
                 std::cout << " " << std::flush;
